@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            color: #6a6c6f;
+            background-color: #f1f3f6;
+            margin-top: 30px;
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: #fff;
+            border-color: #e4e5e7;
+            padding: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .panel-default>.panel-heading a {
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .panel-default>.panel-heading a:after {
+            content: "";
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            float: right;
+            transition: transform .25s linear;
+            -webkit-transition: -webkit-transform .25s linear;
+        }
+
+        .panel-default>.panel-heading a[aria-expanded="true"] {
+            background-color: #eee;
+        }
+
+        .panel-default>.panel-heading a[aria-expanded="true"]:after {
+            content: "\2212";
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .panel-default>.panel-heading a[aria-expanded="false"]:after {
+            content: "\002b";
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        .accordion-option {
+            width: 100%;
+            float: left;
+            clear: both;
+            margin: 15px 0;
+        }
+
+        .accordion-option .title {
+            font-size: 20px;
+            font-weight: bold;
+            float: left;
+            padding: 0;
+            margin: 0;
+        }
+
+        .accordion-option .toggle-accordion {
+            float: right;
+            font-size: 16px;
+            color: #6a6c6f;
+        }
+
+        .accordion-option .toggle-accordion:before {
+            content: "Expand All";
+        }
+
+        .accordion-option .toggle-accordion.active:before {
+            content: "Collapse All";
+        }
+
+        .quantity {
+            position: relative;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .quantity input {
+            width: 45px;
+            height: 42px;
+            line-height: 1.65;
+            float: left;
+            display: block;
+            padding: 0;
+            margin: 0;
+            padding-left: 20px;
+            border: 1px solid #eee;
+        }
+
+        .quantity input:focus {
+            outline: 0;
+        }
+
+        .quantity-nav {
+            float: left;
+            position: relative;
+            height: 42px;
+        }
+
+        .quantity-button {
+            position: relative;
+            cursor: pointer;
+            border-left: 1px solid #eee;
+            width: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 13px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+            line-height: 1.7;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        .quantity-button.quantity-up {
+            position: absolute;
+            height: 50%;
+            top: 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .quantity-button.quantity-down {
+            position: absolute;
+            bottom: -1px;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" onsubmit="sendPage2()">
+        <div class="container">
+            <div class="accordion-option">
+                <h3 class="title">Liverpool - Compras</h3>
+                <a href="javascript:void(0)" class="toggle-accordion active" accordion-id="#accordion"></a>
+            </div>
+            <div class="clearfix"></div>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Mi Bolsa de Compras
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" style="overflow: hidden;"
+                        aria-labelledby="headingOne">
+                        <div class="panel-body w-100">
+                            <div class="quantity">
+                                <input id="numberInput" name="numberInput" type="number" min="1" max="9" step="1" value="1" style="width: 70px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <br>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" onclick="redirectAction()">Redirect</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary" onclick="addCookie()">Crear Cookie</button>
+            </div>
+        </div>
+        
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script>
+         window.digitalData = window.digitalData || {};
+         $('#collapseOne').on('hidden.bs.collapse', function () {
+            window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "collapse",
+                    eventAction: "collapse",
+                    isOpen: false,
+                    timeStamp: new Date()
+                });
+        })
+        $('#collapseOne').on('shown.bs.collapse', function () {
+            window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "collapse",
+                    eventAction: "collapse",
+                    isOpen: true,
+                    timeStamp: new Date()
+                });
+        })
+        // $(document).ready(function () {
+
+        //     $(".toggle-accordion").on("click", function () {
+               
+               
+        //         var accordionId = $(this).attr("accordion-id"),
+        //             numPanelOpen = $(accordionId + ' .collapse.in').length;
+
+        //         $(this).toggleClass("active");
+
+        //         if (numPanelOpen == 0) {
+        //             openAllPanels(accordionId);
+        //         } else {
+        //             closeAllPanels(accordionId);
+        //         }
+
+        //     })
+
+        //     openAllPanels = function (aId) {
+        //         console.log("setAllPanelOpen");
+        //         $(aId + ' .panel-collapse:not(".in")').collapse('show');
+        //         console.log('clickckc')
+        //     }
+        //     closeAllPanels = function (aId) {
+        //         console.log("setAllPanelclose");
+        //         $(aId + ' .panel-collapse.in').collapse('hide');
+        //         console.log('clickckc')
+        //     }
+
+        // });
+
+
+        jQuery(
+                '<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>')
+            .insertAfter('.quantity input');
+        jQuery('.quantity').each(function () {
+            var spinner = jQuery(this),
+                input = spinner.find('input[type="number"]'),
+                btnUp = spinner.find('.quantity-up'),
+                btnDown = spinner.find('.quantity-down'),
+                min = input.attr('min'),
+                max = input.attr('max');
+
+            btnUp.click(function () {
+                var oldValue = parseFloat(input.val());
+                if (oldValue >= max) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue + 1;
+                }
+                spinner.find("input").val(newVal);
+                spinner.find("input").trigger("change");
+                window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "up",
+                    eventAction: "increment",
+                    timeStamp: new Date()
+                });
+            });
+
+            btnDown.click(function () {
+                var oldValue = parseFloat(input.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                spinner.find("input").val(newVal);
+                spinner.find("input").trigger("change");
+                window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "down",
+                    eventAction: "decrement",
+                    timeStamp: new Date()
+                });
+            });
+
+        });
+        function redirectAction(){
+            window.location.href="./page2.html"
+            localStorage.clear()
+            window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "redirect",
+                    eventAction: "redirecciona",
+                    timeStamp: new Date()
+                });
+        }
+        function addCookie(){
+            var today =  new Date();
+            document.cookie = "fecha="+today;
+            window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "addCookie",
+                    eventAction: "cookies",
+                    timeStamp: new Date()
+                });
+        }
+        function sendPage2(){
+            window.digitalData.event = window.digitalData.event || [];
+                window.digitalData.event.push({
+                    eventName: "sendData",
+                    eventAction: "submit",
+                    timeStamp: new Date()
+                });
+            event.preventDefault();
+            localStorage.setItem('valueForm', $("#numberInput").val());
+            window.location.href = './page2.html'
+        }
+    </script>
+</body>
+
+</html>
