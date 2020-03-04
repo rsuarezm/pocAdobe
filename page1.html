@@ -164,7 +164,7 @@
             height: 50%;
         }
     </style>
-    <script src="//assets.adobedtm.com/50a0cd88cb00/9e941d6e7550/launch-75404a94d348-development.min.js" async></script>
+    <script src="//assets.adobedtm.com/bf7445f22387/45cbbaa34262/launch-0491859b446c-development.min.js" async></script>
 </head>
 
 <body>
@@ -287,12 +287,21 @@
                 }
                 spinner.find("input").val(newVal);
                 spinner.find("input").trigger("change");
+
+                // Evento 2
+
                 window.digitalData.event = window.digitalData.event || [];
                 window.digitalData.event.push({
-                    eventName: "up",
-                    eventAction: "increment",
+                    eventName: "Navigation Click",
+                    eventAction: "navigationClick",
+                    attributes: {
+                        label: "NAVIGATION_LABEL"
+                    }, 
+                    type: "navigation",
                     timeStamp: new Date()
                 });
+
+                _satellite.track("leave");
             });
 
             btnDown.click(function () {
